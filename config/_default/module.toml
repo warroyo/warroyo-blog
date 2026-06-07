@@ -1,0 +1,7 @@
+# -- Hugo Modules --
+# Blowfish is installed as a Hugo Module. Update it with:
+#   hugo mod get -u github.com/nunocoracao/blowfish/v2
+#   hugo mod tidy
+
+[[imports]]
+  path = "github.com/nunocoracao/blowfish/v2"

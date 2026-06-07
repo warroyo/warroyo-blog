@@ -1,0 +1,34 @@
+# -- Main Menu --
+# Displayed in the header. Ordered by weight (low to high).
+
+[[main]]
+  name = "Posts"
+  pageRef = "posts"
+  weight = 10
+
+[[main]]
+  name = "Tags"
+  pageRef = "tags"
+  weight = 20
+
+[[main]]
+  name = "About"
+  pageRef = "about"
+  weight = 30
+
+[[main]]
+  identifier = "github"
+  pre = "github"
+  url = "https://github.com/warroyo"
+  weight = 40
+
+# -- Footer Menu --
+[[footer]]
+  name = "Posts"
+  pageRef = "posts"
+  weight = 10
+
+[[footer]]
+  name = "Tags"
+  pageRef = "tags"
+  weight = 20

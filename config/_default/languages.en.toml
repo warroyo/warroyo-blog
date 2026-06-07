@@ -1,0 +1,21 @@
+locale = "en"
+label = "English"
+weight = 1
+title = "Will Arroyo"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  description = "Will Arroyo's blog — notes on software, infrastructure, and engineering."
+
+[params.author]
+  name = "Will Arroyo"
+  # image = "img/author.jpg" # add an image to assets/img/author.jpg to enable
+  headline = "Engineer & writer"
+  bio = "I write about software, infrastructure, and the things I'm building."
+  links = [
+    { github = "https://github.com/warroyo" },
+    { email = "mailto:willarroyoa@gmail.com" },
+  ]

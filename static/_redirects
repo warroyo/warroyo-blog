@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects.
+# Add Hashnode -> new-site slug mappings here during content migration so old
+# links keep working, e.g.:
+#   /old-hashnode-slug   /posts/new-slug/   301
