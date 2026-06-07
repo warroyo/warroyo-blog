@@ -64,14 +64,24 @@ Add `301` redirects from old Hashnode paths to the new ones in
 /old-hashnode-slug   /posts/new-slug/   301
 ```
 
-## 5. Optional conversion script
+## 5. Automated migration script
 
-When the export is available, drop a `scripts/convert-hashnode.mjs` Node script
-that:
+[`scripts/migrate-hashnode.mjs`](./scripts/migrate-hashnode.mjs) does all of the
+above against Hashnode's public GraphQL API. It pulls every post, writes
+`content/posts/<slug>/index.md` with converted front matter, downloads the cover
+and in-body images into each post folder, rewrites image links to relative
+paths, and appends `301` redirects to `static/_redirects`.
 
-1. Reads each exported Markdown file.
-2. Parses + rewrites front matter per the table above.
-3. Downloads images and rewrites links.
-4. Writes `content/posts/<slug>/index.md`.
+```bash
+node scripts/migrate-hashnode.mjs blog.warroyo.com
+make preview   # review the imported posts locally
+```
 
-Run it once, review the output with `hugo server -D`, then commit.
+Requires Node >= 20 (no external dependencies). It's re-runnable: post folders
+are overwritten and redirects are de-duplicated, so you can tweak and run again.
+
+> **Note:** must be run from an environment with outbound access to
+> `gql.hashnode.com` and `cdn.hashnode.com`. The Claude Code web sandbox blocks
+> these by default, so either run it on your local machine or widen the
+> environment's network policy
+> ([docs](https://code.claude.com/docs/en/claude-code-on-the-web)).
