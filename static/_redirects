@@ -2,3 +2,13 @@
 # Add Hashnode -> new-site slug mappings here during content migration so old
 # links keep working, e.g.:
 #   /old-hashnode-slug   /posts/new-slug/   301
+
+# Hashnode migration redirects
+/integrating-tap-with-ado-pipelines /posts/integrating-tap-with-ado-pipelines/ 301
+/how-to-create-custom-workload-types-with-tap /posts/how-to-create-custom-workload-types-with-tap/ 301
+/setting-static-ips-for-workloads-in-tkg /posts/setting-static-ips-for-workloads-in-tkg/ 301
+/templating-cluster-creation-with-tanzu-mission-control /posts/templating-cluster-creation-with-tanzu-mission-control/ 301
+/auditing-cns-volumes-in-vcf /posts/auditing-cns-volumes-in-vcf/ 301
+/windows-vks /posts/windows-vks/ 301
+/vcfa-argocd-oidc /posts/vcfa-argocd-oidc/ 301
+/vcf-secret-store-eso /posts/vcf-secret-store-eso/ 301
