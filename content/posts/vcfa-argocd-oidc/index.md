@@ -10,7 +10,7 @@ With support for [ArgoCD as a service](https://blogs.vmware.com/cloud-foundation
 
 With these two features it immediately became clear that there is a good pairing here. I can have ArgoCD OIDC use VCFA as the provider making it so that users can seamlessly login into ArgoCD and as an administrator I can use common roles/groups for access. The rest of this post walks through setting up this integration.
 
-![](img-1.gif)
+{{< video src="img-1.mp4" autoplay=true loop=true muted=true controls=true ratio="860/360" >}}
 
 ## Architecture
 
