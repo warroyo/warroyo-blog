@@ -12,3 +12,7 @@
 /windows-vks /posts/windows-vks/ 301
 /vcfa-argocd-oidc /posts/vcfa-argocd-oidc/ 301
 /vcf-secret-store-eso /posts/vcf-secret-store-eso/ 301
+
+# Hashnode page + feed paths
+/about-me /about/ 301
+/rss.xml /index.xml 301

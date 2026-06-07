@@ -2,7 +2,7 @@
 # Refer to the Blowfish docs for details on each parameter.
 # https://blowfish.page/docs/getting-started/
 
-baseURL = "https://warroyo-blog.pages.dev/"
+baseURL = "https://blog.warroyo.com/"
 defaultContentLanguage = "en"
 
 enableRobotsTXT = true
