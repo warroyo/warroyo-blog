@@ -1,0 +1,24 @@
+{{/* williamlam-style social-image fallback. The post list never shows
+     thumbnails (cascade hideFeatureImage), so feature images exist only for
+     link sharing. When a post has no explicit cover, use the first image in the
+     body (e.g. a screenshot) as the og:image / twitter:image. Posts that DO
+     have a featured/cover/thumbnail resource are already handled in head.html,
+     so we skip them here to avoid duplicate tags. */}}
+{{ if .IsPage }}
+  {{ $hasFeatured := false }}
+  {{ $imgs := .Resources.ByType "image" }}
+  {{ range slice "*featured*" "*feature*" "*cover*" "*thumbnail*" }}
+    {{ if and (not $hasFeatured) ($imgs.GetMatch .) }}{{ $hasFeatured = true }}{{ end }}
+  {{ end }}
+  {{ if or .Params.images .Params.featureImage .Params.featureimage }}{{ $hasFeatured = true }}{{ end }}
+  {{ if not $hasFeatured }}
+    {{ with findRESubmatch `(?is)<img[^>]*?\ssrc="([^"]+)"` .Content 1 }}
+      {{ $src := index (index . 0) 1 }}
+      {{ with $src }}
+        {{ $abs := . | absURL }}
+        <meta property="og:image" content="{{ $abs }}">
+        <meta name="twitter:image" content="{{ $abs }}">
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
