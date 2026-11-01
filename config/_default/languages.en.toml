@@ -1,20 +1,20 @@
 locale = "en"
 label = "English"
 weight = 1
-title = "warroyo's Blog"
+title = "Will Arroyo"
 
 [params]
   displayName = "EN"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  description = "Will Arroyo's blog — notes on software, infrastructure, and engineering."
+  description = "Will Arroyo — writing, projects and a home lab, on Kubernetes, VCF and local AI."
 
 [params.author]
   name = "Will Arroyo"
   # image = "img/author.jpg" # add an image to assets/img/author.jpg to enable
-  headline = "Engineer & writer"
-  bio = "I write about software, infrastructure, and the things I'm building."
+  headline = "Kubernetes, VCF and local AI"
+  bio = "I write about infrastructure, the things I build, and the lab I run them on."
   links = [
     { github = "https://github.com/warroyo" },
     { email = "mailto:willarroyoa@gmail.com" },

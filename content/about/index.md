@@ -21,6 +21,6 @@ about food mixed into this blog.
 
 You can find me on [GitHub](https://github.com/warroyo).
 
-This blog runs on [Hugo](https://gohugo.io/) with the
+This site runs on [Hugo](https://gohugo.io/) with the
 [Blowfish](https://blowfish.page/) theme and is hosted on
 [Cloudflare Pages](https://pages.cloudflare.com/).

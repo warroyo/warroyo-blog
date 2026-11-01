@@ -110,6 +110,37 @@ Site config lives in `config/_default/`:
 After adding a custom domain in Cloudflare, update `baseURL` in
 `config/_default/hugo.toml` to match.
 
+### Domains
+
+The site lives at `https://warroyo.com/`. `blog.warroyo.com`, where the blog
+started, redirects there with the path kept, so old post links still work:
+
+- **Pages → Custom domains:** `warroyo.com` (and `blog.warroyo.com`, kept so
+  its DNS record stays proxied).
+- **Rules → Redirect Rules** on the `warroyo.com` zone: when the hostname
+  equals `blog.warroyo.com`, a dynamic 301 to
+  `concat("https://warroyo.com", http.request.uri.path)`, preserving the
+  query string.
+
+A host-level redirect cannot live in `static/_redirects`, which only matches
+paths.
+
+## Interactive pages
+
+A page can ship its own JavaScript and CSS next to its `index.md`, included
+with the `bundle-asset` shortcode (fingerprinted, with SRI):
+
+```markdown
+{{</* bundle-asset "lab-map.css" */>}}
+<div id="lab-map">…</div>
+{{</* bundle-asset "lab-map.js" */>}}
+```
+
+`content/lab/how-it-works/` is the example: an SVG map drawn by
+`lab-map.js`, with a wide and a narrow layout. Content under `lab/` is
+public, so it names roles and software, never hostnames, IPs or anything
+from a client environment.
+
 The `static/_headers` and `static/_redirects` files are picked up
 automatically by Cloudflare Pages.
 

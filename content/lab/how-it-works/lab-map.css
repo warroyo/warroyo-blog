@@ -1,0 +1,133 @@
+/* Interactive lab map (lab-map.js). Colours come from the site scheme
+   (assets/css/schemes/hevmind.css): warm paper, ink, and the orange signal. */
+.lab-map {
+  --lm-paper: rgb(var(--color-neutral));
+  --lm-card: rgb(var(--color-neutral-50));
+  --lm-rule: rgb(var(--color-neutral-300));
+  --lm-muted: rgb(var(--color-neutral-500));
+  --lm-ink: rgb(var(--color-neutral-900));
+  --lm-signal: rgb(var(--color-primary-500));
+  --lm-signal-soft: rgb(var(--color-primary-50));
+  margin: 1.5rem 0 2rem;
+  font-family: var(--font-mono);
+}
+
+.lab-map__controls,
+.lab-map__tour {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.lab-map__tour {
+  justify-content: center;
+  margin: 0.75rem 0;
+}
+
+.lab-map button {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--lm-rule);
+  border-radius: 999px;
+  background: var(--lm-paper);
+  color: var(--lm-ink);
+  cursor: pointer;
+}
+
+.lab-map button:hover { border-color: var(--lm-ink); }
+.lab-map button[aria-pressed="true"] {
+  background: var(--lm-ink);
+  border-color: var(--lm-ink);
+  color: var(--lm-paper);
+}
+.lab-map button:disabled { opacity: 0.4; cursor: default; }
+.lab-map button:focus-visible,
+.lab-map .lm-node:focus-visible { outline: 2px solid var(--lm-signal); outline-offset: 2px; }
+
+.lab-map__canvas svg { display: block; width: 100%; height: auto; }
+
+.lab-map .lm-group rect {
+  fill: none;
+  stroke: var(--lm-rule);
+  stroke-dasharray: 5 4;
+}
+.lab-map .lm-group text {
+  fill: var(--lm-muted);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.lab-map .lm-node { cursor: pointer; transition: opacity 0.2s; }
+.lab-map .lm-node rect {
+  fill: var(--lm-card);
+  stroke: var(--lm-rule);
+  stroke-width: 1.2;
+  transition: fill 0.2s, stroke 0.2s;
+}
+.lab-map .lm-node[data-kind="cloud"] rect { stroke-dasharray: 3 3; }
+.lab-map .lm-node .lm-title { fill: var(--lm-ink); font-size: 14px; font-weight: 700; }
+.lab-map .lm-node .lm-sub { fill: var(--lm-muted); font-size: 11.5px; }
+.lab-map .lm-node:hover rect { stroke: var(--lm-ink); }
+.lab-map .lm-node.is-selected rect { stroke: var(--lm-ink); stroke-width: 2; }
+.lab-map .lm-node.is-lit rect { fill: var(--lm-signal-soft); stroke: var(--lm-signal); stroke-width: 2; }
+
+.lab-map .lm-edge path {
+  fill: none;
+  stroke: var(--lm-muted);
+  stroke-width: 1.3;
+  transition: opacity 0.2s, stroke 0.2s;
+}
+.lab-map .lm-edge text {
+  fill: var(--lm-muted);
+  font-size: 11.5px;
+  paint-order: stroke;
+  stroke: var(--lm-paper);
+  stroke-width: 4px;
+}
+.lab-map .lm-edge.is-lit path {
+  stroke: var(--lm-signal);
+  stroke-width: 2.2;
+  stroke-dasharray: 7 5;
+  animation: lm-flow 0.8s linear infinite;
+}
+.lab-map .lm-edge .lm-label { display: none; }
+.lab-map .lm-edge.is-lit .lm-label { display: inline; fill: var(--lm-signal); font-weight: 700; }
+.lab-map .lm-arrow { fill: var(--lm-muted); }
+.lab-map .lm-arrow-lit { fill: var(--lm-signal); }
+
+.lab-map .is-dim { opacity: 0.18; }
+
+@keyframes lm-flow { to { stroke-dashoffset: -12; } }
+@media (prefers-reduced-motion: reduce) {
+  .lab-map .lm-edge.is-lit path { animation: none; }
+}
+
+.lab-map__detail {
+  min-height: 6rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--lm-rule);
+  border-left: 3px solid var(--lm-signal);
+  border-radius: 6px;
+  background: var(--lm-card);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.lab-map__detail h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+.lab-map__detail p { margin: 0 0 0.4rem; }
+.lab-map__detail ul { margin: 0.2rem 0 0; padding-left: 1.1rem; }
+.lab-map__detail li { margin: 0.1rem 0; }
+.lab-map__detail .lm-step { color: var(--lm-muted); font-family: var(--font-mono); font-size: 0.78rem; }
+
+/* The article column is narrow; on wide screens let the map use the empty
+   space to its right so the text inside it stays readable. */
+@media (min-width: 1200px) {
+  .lab-map__canvas { width: min(1000px, calc(100vw - 18rem)); }
+}
