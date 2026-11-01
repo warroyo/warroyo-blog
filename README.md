@@ -138,8 +138,8 @@ with the `bundle-asset` shortcode (fingerprinted, with SRI):
 
 `content/lab/how-it-works/` is the example: an SVG map drawn by
 `lab-map.js`, with a wide and a narrow layout. Content under `lab/` is
-public, so it names roles and software, never hostnames, IPs or anything
-from a client environment.
+public, so it names roles and software, never hostnames, IPs, VPNs or
+anything outside the home lab.
 
 The `static/_headers` and `static/_redirects` files are picked up
 automatically by Cloudflare Pages.
