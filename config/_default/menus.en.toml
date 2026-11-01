@@ -7,20 +7,25 @@
   weight = 10
 
 [[main]]
-  name = "Tags"
-  pageRef = "tags"
+  name = "Lab"
+  pageRef = "lab"
   weight = 20
+
+[[main]]
+  name = "Projects"
+  pageRef = "projects"
+  weight = 30
 
 [[main]]
   name = "About"
   pageRef = "about"
-  weight = 30
+  weight = 40
 
 [[main]]
   identifier = "github"
   pre = "github"
   url = "https://github.com/warroyo"
-  weight = 40
+  weight = 50
 
 # -- Footer Menu --
 [[footer]]
@@ -29,6 +34,16 @@
   weight = 10
 
 [[footer]]
+  name = "Lab"
+  pageRef = "lab"
+  weight = 20
+
+[[footer]]
+  name = "Projects"
+  pageRef = "projects"
+  weight = 30
+
+[[footer]]
   name = "Tags"
   pageRef = "tags"
-  weight = 20
+  weight = 40

@@ -1,0 +1,14 @@
+{{/* Includes a CSS or JS file from the current page bundle, fingerprinted:
+     {{< bundle-asset "map.js" >}}. Lets an interactive page ship its own
+     code next to its index.md. */}}
+{{- $name := .Get 0 -}}
+{{- with .Page.Resources.Get $name -}}
+  {{- $r := . | fingerprint -}}
+  {{- if eq .MediaType.SubType "css" -}}
+    <link rel="stylesheet" href="{{ $r.RelPermalink }}" integrity="{{ $r.Data.Integrity }}">
+  {{- else -}}
+    <script src="{{ $r.RelPermalink }}" integrity="{{ $r.Data.Integrity }}" defer></script>
+  {{- end -}}
+{{- else -}}
+  {{- errorf "bundle-asset: %q not found in %s" $name .Page.File.Path -}}
+{{- end -}}
